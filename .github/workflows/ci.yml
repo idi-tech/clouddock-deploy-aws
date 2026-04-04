@@ -1,0 +1,23 @@
+name: CloudDock Deploy CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  docker-build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify Docker installation
+        run: docker --version
+
+      - name: Build application image
+        run: docker build -t clouddock-deploy ./app
