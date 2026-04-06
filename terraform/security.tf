@@ -1,20 +1,6 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-
-  required_version = ">= 1.0.0"
-}
-
-provider "aws" {
-  region = var.aws_region
-}
-
 resource "aws_security_group" "web_sg" {
   name        = "clouddock-web-sg"
+  vpc_id      = aws_vpc.main.id
   description = "Allow SSH and HTTP access for CloudDock Deploy"
 
   ingress {
@@ -39,17 +25,5 @@ resource "aws_security_group" "web_sg" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-resource "aws_instance" "web_server" {
-  ami                    = var.ami_id
-  instance_type          = var.instance_type
-  key_name               = var.key_name
-  vpc_security_group_ids = [aws_security_group.web_sg.id]
-
-  tags = {
-    Name    = var.instance_name
-    Project = "CloudDock Deploy"
   }
 }

@@ -3,6 +3,28 @@ variable "aws_region" {
   type        = string
 }
 
+
+variable "vpc_cidr" {
+  description = "CIDR block for the VPC"
+  type        = string
+}
+
+variable "public_subnet_cidr" {
+  description = "CIDR block for the public subnet"
+  type        = string
+}
+
+variable "availability_zone" {
+  type        = string
+  description = "The AZ for the public subnet"
+  default     = "us-east-1a"
+}
+
+variable "destination_cidr_block" {
+  description = "Default route to the Internet"
+  type        = string
+}
+
 variable "ami_id" {
   description = "AMI ID for the EC2 instance"
   type        = string
