@@ -2,7 +2,7 @@
 
 CloudDock Deploy is a hands-on project that shows how to build and deploy a web application. It uses Docker, Terraform, GitHub Actions, and AWS.
 
-This project follows a real DevOps workflow. It covers application packaging, infrastructure provisioning, CI validation, and cloud-based hosting.
+This project follows a real DevOps workflow, covering containerized application, automated infrastructure provisioning, CI validation, and cloud-based hosting.
 
 ---
 ## Project Objectives
@@ -47,16 +47,17 @@ clouddock-deploy-aws/
 │   ├── Dockerfile
 │   └── index.html
 ├── terraform/
-│   ├── compute.tf
-│   ├── network.tf
-│   ├── outputs.tf
 │   ├── provider.tf
+│   ├── network.tf
 │   ├── security.tf
-│   ├── terraform.tfvars.example
-│   └── variables.tf
+│   ├── compute.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   └── terraform.tfvars.example
 ├── .github/
 │   └── workflows/
 │       └── ci.yml
+├── deploy.sh
 ├── .gitignore
 └── README.md
 ```
@@ -129,7 +130,7 @@ cp terraform.tfvars.example terraform.tfvars
 terraform.tfvars is intentionally hidden by .gitignore so it stays off Github.
 
 ---
-## EC2 Deployment Steps
+## First-Time Deployment
 After Terraform creates the infrastructure:
 
 ### Connect to the EC2 instance
@@ -163,6 +164,53 @@ docker run -d -p 80:80 --name clouddock-container clouddock-deploy
 http://YOUR_PUBLIC_IP
 
 ---
+## Deployment Script
+This project includes a reusable deployment script:
+```bash
+deploy.sh
+```
+The deploy.sh script makes updating your application fast and easy. Instead of typing many commands, you just run one script to:
+- pull the latest code from GitHub
+- stop the old Docker container
+- remove the old container
+- remove the old Docker image
+- build a new Docker image
+- start a fresh container
+Why use it? It makes your deployment faster, safer, and professional.
+
+---
+
+## How to Redeploy Updates
+After making changes locally and pushing them to Github:
+```bash
+git add .
+git commit -m "your update message"
+git push
+```
+### Connect the EC2 instance: 
+```bash
+ssh -i your-key.pem ubuntu@YOUR_PUBLIC_IP
+```
+### Go to the project folder:
+```bash
+cd clouddock-deploy-aws
+```
+### Pull the latest changes:
+```bash
+git pull origin main
+```
+### Make the script executable (first time only):
+```bash
+chmod +x deploy.sh
+```
+### Run the deployment script:
+```bash
+./deploy.sh
+```
+This updates the running application on the server.
+
+
+---
 ## Deployment Flow
 ```bash
 Local Machine
@@ -193,7 +241,9 @@ Completed:
   - Github repository structure
   - Github Actions CI workflow
   - Terraform-based AWS infrastructure provisioning
+  - Custom VPC networking
   - Manual deployment to EC2
+  - Reusable deployment script
   - Public HTTP access
 
 ---
@@ -202,5 +252,6 @@ Completed:
 - Docker image registry integration
 - Nginx reverse proxy
 - Domain name and HTTPS support
+- Docker Compose support
 - Infrastructure modularization
 - User Data or cloud-init bootstrapping
