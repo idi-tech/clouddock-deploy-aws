@@ -251,8 +251,8 @@ Completed:
 ## Future Improvements
 - Automated deployment with Github Actions CD 
 - Docker image registry integration
-- Nginx reverse proxy
-- Domain name and HTTPS support
+- Enable HTTPS with Nginx and SSL/TLS certificates
+- Add custom domain support
 - Docker Compose support
 - Infrastructure modularization
 - User Data or cloud-init bootstrapping

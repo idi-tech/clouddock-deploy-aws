@@ -11,3 +11,12 @@ resource "aws_instance" "web_server" {
     Project = "CloudDock Deploy"
   }
 }
+
+resource "aws_eip" "web_eip" {
+  instance = aws_instance.web_server.id
+  domain   = "vpc"
+
+  tags = {
+    Name = "${var.instance_name}-eip"
+  }
+}
