@@ -176,6 +176,7 @@ The deploy.sh script makes updating your application fast and easy. Instead of t
 - remove the old Docker image
 - build a new Docker image
 - start a fresh container
+- auto-restart container after server reboot
 Why use it? It makes your deployment faster, safer, and professional.
 
 ---

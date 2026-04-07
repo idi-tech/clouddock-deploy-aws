@@ -25,7 +25,7 @@ docker rmi $APP_NAME || true
 echo "Building new Docker image..."
 docker build -t $APP_NAME ./app
 
-echo "Starting new container..."
-docker run -d -p 80:80 --name $CONTAINER_NAME $APP_NAME
+echo "Starting new container with restart policy..."
+docker run -d -p 80:80 --restart unless-stopped --name $CONTAINER_NAME $APP_NAME
 
 echo "Deployment completed successfully!"
