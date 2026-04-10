@@ -1,12 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clouddock Deploy</title>
+    <meta charset="UTF-8">
+    <title>Automated AWS Web App Deployment | Cloud Architecture</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #eceff1; color: #232f3e; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; }
+        .card { background: white; padding: 40px; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-top: 6px solid #ff9900; max-width: 600px; text-align: center; }
+        
+        .badge { background: #e8f5e9; color: #2e7d32; padding: 8px 16px; border-radius: 30px; font-size: 13px; font-weight: bold; display: inline-flex; align-items: center; margin-bottom: 25px; }
+        .dot { height: 10px; width: 10px; background-color: #2e7d32; border-radius: 50%; display: inline-block; margin-right: 8px; animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(46, 125, 50, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+        }
+
+        h1 { font-size: 26px; margin-bottom: 15px; color: #1a202c; }
+        p { line-height: 1.6; color: #4a5568; font-size: 16px; margin-bottom: 15px; }
+
+        .highlight { color: #1a202c; font-weight: 600; }
+
+        .tech-stack { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+        .tag { background: #f1f5f9; color: #475569; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid #e2e8f0; }
+        
+        .uptime { font-size: 12px; color: #94a3b8; margin-top: 25px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+    </style>
 </head>
 <body>
-  <h1>Clouddock Deploy</h1>
-  <p>Reliable Docker-based web application deployment on AWS (EC2) infrastructure.</p>
+    <div class="card">
+        <div class="badge"><span class="dot"></span> LIVE • PRODUCTION READY</div>
+
+        <h1>Automated AWS Web App Deployment</h1>
+
+        <p>
+            This live environment demonstrates a <span class="highlight">complete cloud deployment solution</span> designed for reliability, scalability, and simplicity.
+        </p>
+
+        <p>
+            The infrastructure is provisioned automatically using <strong>Terraform</strong>, while the application runs inside a <strong>Docker container</strong> on an <strong>AWS EC2 server</strong>.
+        </p>
+
+        <p>
+            This project reflects a practical DevOps approach focused on <span class="highlight">real-world deployment, automation, and maintainability</span>.
+        </p>
+
+        <p style="margin-top:20px; font-size:14px; color: #1a202c; font-style: italic;">
+            Built and deployed by Idi Esperant, DevOps engineer focused on simple and efficient cloud solutions.
+        </p>
+        
+        <div class="tech-stack">
+            <span class="tag">AWS Cloud</span>
+            <span class="tag">Terraform</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Nginx</span>
+        </div>
+
+        <div class="uptime">
+            System Status: Online • High Availability Setup • Region: AWS
+        </div>
+    </div>
 </body>
 </html>
